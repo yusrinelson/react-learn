@@ -4,12 +4,14 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export default function Shoes({ liked, toggleHearts }) {
   const [showItems, setShowItems] = useState([]);
-  //   const [liked, setLiked] = useState([]);
-  //   const [addLikedItems, setAddLikedItems] = useState([]);
+  const [loading, setLoading] = useState([]);
 
   useEffect(() => {
-    setShowItems(shoeItems);
-    console.log(shoeItems);
+    setTimeout(() => {
+      setShowItems(shoeItems);
+      console.log(shoeItems);
+      setLoading(false);
+    }, 1000);
   }, []);
 
   const displayItems = showItems.map((item) => {
@@ -33,5 +35,9 @@ export default function Shoes({ liked, toggleHearts }) {
       </div>
     );
   });
-  return <div className="items-container">{displayItems}</div>;
+  return (
+    <div className="items-container">
+      {loading ? <h1 className="loading-state">Loading...</h1> : displayItems}
+    </div>
+  );
 }

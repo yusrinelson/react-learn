@@ -2,7 +2,7 @@ import Navbar from "./Navbar.js";
 import { Link, Outlet } from "react-router-dom";
 
 export default function Home() {
-;
+
   return (
     <div>
       <Navbar/>
@@ -14,8 +14,6 @@ export default function Home() {
         </ul>
       </header>
       <Outlet/>
-
-
     </div>
   );
 }

@@ -4,10 +4,14 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export default function BottomWear({ liked, toggleHearts }) {
   const [showItems, setShowItems] = useState([]);
+  const [loading, setLoading] = useState([]);
 
   useEffect(() => {
-    setShowItems(bottomWearItems);
-    console.log(bottomWearItems);
+    setTimeout(() => {
+      setShowItems(bottomWearItems);
+      console.log(bottomWearItems);
+      setLoading(false);
+    }, 1000);
   }, []);
 
   const displayItems = showItems.map((item) => {
@@ -28,5 +32,9 @@ export default function BottomWear({ liked, toggleHearts }) {
       </div>
     );
   });
-  return <div className="items-container">{displayItems}</div>;
+  return (
+    <div className="items-container">
+      {loading ? <h1 className="loading-state">Loading...</h1> : displayItems}
+    </div>
+  );
 }

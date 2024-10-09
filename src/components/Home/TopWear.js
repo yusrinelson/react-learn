@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { topWearItems } from "../items";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+
 export default function TopWear({ liked, toggleHearts }) {
   const [showItems, setShowItems] = useState([]);
+  const [loading, setLoading] = useState([]);
 
   useEffect(() => {
-    setShowItems(topWearItems);
-    console.log(topWearItems);
+    setTimeout(() => {
+      setShowItems(topWearItems);
+      console.log(topWearItems);
+      setLoading(false);
+    }, 1000);
   }, []);
 
   const displayItems = showItems.map((item) => {
@@ -16,7 +21,10 @@ export default function TopWear({ liked, toggleHearts }) {
           <img src={item.imageSrc} alt={item.name} className="items" />
           <p>{item.name}</p>
           {liked[item.id] ? (
-            <FaHeart className="heart-icon" onClick={() => toggleHearts(item)} />
+            <FaHeart
+              className="heart-icon"
+              onClick={() => toggleHearts(item)}
+            />
           ) : (
             <FaRegHeart
               className="heart-icon"
@@ -27,5 +35,9 @@ export default function TopWear({ liked, toggleHearts }) {
       </div>
     );
   });
-  return <div className="items-container">{displayItems}</div>;
+  return (
+    <div className="items-container">
+      {loading ? <h1 className="loading-state">Loading...</h1> : displayItems}
+    </div>
+  );
 }
