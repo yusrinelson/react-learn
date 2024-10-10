@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import "./UserProfile.css";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export default function UserProfile({ liked, likedItems, toggleHearts }) {
   const [loading, setLoading] = useState([]);
+  const {userName} = useParams();
+  const [profile, setProfile] = useState({});
 
   useEffect(() => {
+    const fetchProfile = async () => {
+      setProfile({name: userName});
+    }
+    fetchProfile();
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-  }, []);
+  }, [userName]);
+
   const displayLikeditems = likedItems.map((item) => {
     return (
       <div key={item.id}>
@@ -36,7 +43,7 @@ export default function UserProfile({ liked, likedItems, toggleHearts }) {
     <div>
       <header className="user-header">
         <div className="user-header__content">
-          <h1>USER PROFILE</h1>
+          <h1>{profile? profile.name : "no user name yet"}</h1>
           <p>
             <Link to={"/home"} className="user-nav__headings">
               Home
@@ -49,6 +56,7 @@ export default function UserProfile({ liked, likedItems, toggleHearts }) {
         </div>
         <Outlet />
       </header>
+
       {loading ? (
         <p className="loading-state">Loading...</p>
       ) : (
@@ -56,7 +64,7 @@ export default function UserProfile({ liked, likedItems, toggleHearts }) {
           {displayLikeditems.length > 0 ? (
             displayLikeditems
           ) : (
-            <p>You do not have any liked items :(</p>
+            <p>{userName}, you do not have any liked items :(</p>
           )}
         </div>
       )}
