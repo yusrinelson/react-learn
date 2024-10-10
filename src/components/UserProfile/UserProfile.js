@@ -38,7 +38,7 @@ export default function UserProfile({ liked, likedItems, toggleHearts }) {
         <div className="user-header__content">
           <h1>USER PROFILE</h1>
           <p>
-            <Link to={"/"} className="user-nav__headings">
+            <Link to={"/home"} className="user-nav__headings">
               Home
             </Link>{" "}
             /

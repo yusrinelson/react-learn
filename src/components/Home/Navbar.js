@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <nav className='home-navbar'>
         <ul>
-            <Link to="/" className='nav-headings'><li>HOME</li></Link>
+            <Link to="home/" className='nav-headings'><li>HOME</li></Link>
             <Link to="/about" className='nav-headings'><li>ABOUT</li></Link>
             <Link to="/user/yusri nelson" className='nav-headings'><li>PROFILE</li></Link>
         </ul>

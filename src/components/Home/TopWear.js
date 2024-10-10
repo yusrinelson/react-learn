@@ -4,21 +4,26 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export default function TopWear({ liked, toggleHearts }) {
   const [showItems, setShowItems] = useState([]);
-  const [loading, setLoading] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setShowItems(topWearItems);
-      console.log(topWearItems);
-      setLoading(false);
-    }, 1000);
+    setShowItems(topWearItems);
+    console.log(topWearItems);
+    setLoading(false);
   }, []);
 
+  const handleImageLoad = () => {
+    setLoading(false);
+  };
   const displayItems = showItems.map((item) => {
     return (
       <div key={item.id}>
         <div className="items-box">
-          <img src={item.imageSrc} alt={item.name} className="items" />
+          {/* {loading && <img src={item.imageSrc} alt={item.name} className="items" onLoad={handleImageLoad}/>} */}
+          {loading ? (
+            <div className="loading-placeholder">Loading...</div> 
+          ) : null}
+          <img src={item.imageSrc} alt={item.name} onLoad={handleImageLoad} className="items" />
           <p>{item.name}</p>
           {liked[item.id] ? (
             <FaHeart

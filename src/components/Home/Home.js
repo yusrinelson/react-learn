@@ -8,9 +8,9 @@ export default function Home() {
       <Navbar/>
       <header>
         <ul className="sub-navbar">
-          <Link to={"/topwear"} className="sub-headings"><li>Top Wear</li></Link>
-          <Link to={"/bottomwear"} className="sub-headings"><li>Bottom Wear</li></Link>
-          <Link to={"/shoes"} className="sub-headings"><li>Shoes</li></Link>
+          <Link to={"/home/topwear"} className="sub-headings"><li>Top Wear</li></Link>
+          <Link to={"/home/bottomwear"} className="sub-headings"><li>Bottom Wear</li></Link>
+          <Link to={"/home/shoes"} className="sub-headings"><li>Shoes</li></Link>
         </ul>
       </header>
       <Outlet/>

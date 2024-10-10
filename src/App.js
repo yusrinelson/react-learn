@@ -7,10 +7,11 @@ import TopWear from "./components/Home/TopWear";
 import BottomWear from "./components/Home/BottomWear";
 import Shoes from "./components/Home/Shoes";
 import { useState } from "react";
+import Login from "./components/Login/Login";
 
 
 function App() {
-  const [liked, setLiked] = useState([]); // Initialize `liked` state with an empty object
+  const [liked, setLiked] = useState([]); // Initialize `liked` state 
   const [addLikedItems, setAddLikedItems] = useState([]); // Initialize `likedItems` state with an empty array
 
   function toggleHearts(item) {
@@ -30,9 +31,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/*" element={<Home />}>
+        <Route path="/" element={<Login />} />
+        <Route path="home/*" element={<Home />}>
           <Route path="topwear" element={<TopWear liked={liked} toggleHearts={toggleHearts}/>} />
-          <Route path="BottomWear" element={<BottomWear liked={liked} toggleHearts={toggleHearts} />} />
+          <Route path="bottomwear" element={<BottomWear liked={liked} toggleHearts={toggleHearts} />} />
           <Route path="shoes" element={<Shoes liked={liked} toggleHearts={toggleHearts}/>} />
         </Route>
         <Route path="/about" element={<About />} />

@@ -9,7 +9,7 @@ export default function About() {
         <div className="about-header__content">
         <h1>ABOUT</h1>
         <p>
-          <Link to={"/"} className="about-nav__headings">Home</Link> / <Link to={"/user/yusri nelson"} className="about-nav__headings">Profile</Link>
+          <Link to={"/home"} className="about-nav__headings">Home</Link> / <Link to={"/user/yusri nelson"} className="about-nav__headings">Profile</Link>
         </p>
         <Outlet />
         </div>
