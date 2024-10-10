@@ -14,6 +14,7 @@ function App() {
   const [liked, setLiked] = useState([]); // Initialize `liked` state 
   const [addLikedItems, setAddLikedItems] = useState([]); // Initialize `likedItems` state with an empty array
 
+
   function toggleHearts(item) {
     const updatedLiked = {...liked }; // Create a shallow copy of `liked`
     updatedLiked[item.id] = !updatedLiked[item.id]; // Toggle the value of the item
