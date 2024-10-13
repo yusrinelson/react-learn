@@ -13,6 +13,7 @@ import Login from "./components/Login/Login";
 function App() {
   const [liked, setLiked] = useState([]); // Initialize `liked` state 
   const [addLikedItems, setAddLikedItems] = useState([]); // Initialize `likedItems` state with an empty array
+  const [user, setUser] = useState(null) //stores the logged in user information
 
 
   function toggleHearts(item) {
@@ -32,14 +33,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="home/*" element={<Home />}>
+        <Route path="/" element={<Login setUser={setUser}/>} />
+        <Route path="home/*" element={<Home user={user}/>}>
           <Route path="topwear" element={<TopWear liked={liked} toggleHearts={toggleHearts}/>} />
           <Route path="bottomwear" element={<BottomWear liked={liked} toggleHearts={toggleHearts} />} />
           <Route path="shoes" element={<Shoes liked={liked} toggleHearts={toggleHearts}/>} />
         </Route>
-        <Route path="/about" element={<About />} />
-        <Route path="/user/:userName" element={<UserProfile  liked={liked} likedItems={addLikedItems} toggleHearts={toggleHearts} />} />
+        <Route path="/about" element={<About user={user} />} />
+        <Route path="/user/:userName" element={<UserProfile  liked={liked} likedItems={addLikedItems} toggleHearts={toggleHearts} user={user}/>} />
       </Routes>
     </BrowserRouter>
   );

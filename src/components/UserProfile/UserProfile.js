@@ -3,16 +3,16 @@ import { Link, Outlet, useParams } from "react-router-dom";
 import "./UserProfile.css";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-export default function UserProfile({ liked, likedItems, toggleHearts }) {
+export default function UserProfile({ liked, likedItems, toggleHearts, user }) {
   const [loading, setLoading] = useState([]);
   const {userName} = useParams();
-  const [profile, setProfile] = useState({});
+  // const [profile, setProfile] = useState({});
 
   useEffect(() => {
-    const fetchProfile = async () => {
-      setProfile({name: userName});
-    }
-    fetchProfile();
+    // const fetchProfile = async () => {
+    //   setProfile({name: userName});
+    // }
+    // fetchProfile();
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -43,7 +43,7 @@ export default function UserProfile({ liked, likedItems, toggleHearts }) {
     <div>
       <header className="user-header">
         <div className="user-header__content">
-          <h1>{profile? profile.name : "no user name yet"}</h1>
+          <h1>{user? user : userName}</h1>
           <p>
             <Link to={"/home"} className="user-nav__headings">
               Home

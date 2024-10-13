@@ -1,11 +1,11 @@
 import Navbar from "./Navbar.js";
 import { Link, Outlet } from "react-router-dom";
 
-export default function Home() {
+export default function Home({user}) {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar user={user}/>
       <header>
         <ul className="sub-navbar">
           <Link to={"/home/topwear"} className="sub-headings"><li>Top Wear</li></Link>
